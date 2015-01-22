@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="POCModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="POCModelStoreContainer">
+    <EntitySet Name="File" EntityType="POCModel.Store.File" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FileUploadDB" EntityType="POCModel.Store.FileUploadDB" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FileWithoutEncript" EntityType="POCModel.Store.FileWithoutEncript" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="File">
+    <Key>
+      <PropertyRef Name="fileid" />
+    </Key>
+    <Property Name="fileid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="data" Type="varbinary(max)" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="doctype" Type="varchar" MaxLength="50" />
+    <Property Name="encryptkey" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="FileUploadDB">
+    <Key>
+      <PropertyRef Name="asymfileid" />
+    </Key>
+    <Property Name="asymfileid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar(max)" />
+    <Property Name="type" Type="varchar(max)" />
+    <Property Name="filedata" Type="varbinary(max)" />
+    <Property Name="symmentryKey" Type="varchar(max)" />
+    <Property Name="asymprivatepublicKey" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="FileWithoutEncript">
+    <Key>
+      <PropertyRef Name="fileid" />
+    </Key>
+    <Property Name="fileid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FileContent" Type="varbinary(max)" />
+  </EntityType>
+</Schema>

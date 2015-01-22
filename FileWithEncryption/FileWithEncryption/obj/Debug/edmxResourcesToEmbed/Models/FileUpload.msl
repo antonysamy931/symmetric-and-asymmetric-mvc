@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="POCModelStoreContainer" CdmEntityContainer="POCEntities">
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="POCModel.File">
+        <MappingFragment StoreEntitySet="File">
+          <ScalarProperty Name="encryptkey" ColumnName="encryptkey" />
+          <ScalarProperty Name="fileid" ColumnName="fileid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="doctype" ColumnName="doctype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileUploadDBs">
+      <EntityTypeMapping TypeName="POCModel.FileUploadDB">
+        <MappingFragment StoreEntitySet="FileUploadDB">
+          <ScalarProperty Name="asymprivatepublicKey" ColumnName="asymprivatepublicKey" />
+          <ScalarProperty Name="symmentryKey" ColumnName="symmentryKey" />
+          <ScalarProperty Name="filedata" ColumnName="filedata" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="asymfileid" ColumnName="asymfileid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileWithoutEncripts">
+      <EntityTypeMapping TypeName="POCModel.FileWithoutEncript">
+        <MappingFragment StoreEntitySet="FileWithoutEncript">
+          <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+          <ScalarProperty Name="fileid" ColumnName="fileid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

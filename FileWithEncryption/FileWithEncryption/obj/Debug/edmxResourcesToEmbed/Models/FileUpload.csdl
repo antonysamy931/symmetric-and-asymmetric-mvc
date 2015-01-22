@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="POCModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="POCEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Files" EntityType="POCModel.File" />
+    <EntitySet Name="FileUploadDBs" EntityType="POCModel.FileUploadDB" />
+    <EntitySet Name="FileWithoutEncripts" EntityType="POCModel.FileWithoutEncript" />
+  </EntityContainer>
+  <EntityType Name="File">
+    <Key>
+      <PropertyRef Name="fileid" />
+    </Key>
+    <Property Name="fileid" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="data" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="type" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="doctype" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Type="String" Name="encryptkey" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="FileUploadDB">
+    <Key>
+      <PropertyRef Name="asymfileid" />
+    </Key>
+    <Property Type="Int32" Name="asymfileid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="type" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Binary" Name="filedata" MaxLength="Max" FixedLength="false" />
+    <Property Type="String" Name="symmentryKey" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="asymprivatepublicKey" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="FileWithoutEncript">
+    <Key>
+      <PropertyRef Name="fileid" />
+    </Key>
+    <Property Type="Int64" Name="fileid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Binary" Name="FileContent" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+</Schema>

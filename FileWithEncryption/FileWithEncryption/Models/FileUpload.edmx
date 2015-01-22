@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="POCModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="POCModelStoreContainer">
+          <EntitySet Name="File" EntityType="POCModel.Store.File" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FileUploadDB" EntityType="POCModel.Store.FileUploadDB" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FileWithoutEncript" EntityType="POCModel.Store.FileWithoutEncript" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="fileid" />
+          </Key>
+          <Property Name="fileid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="data" Type="varbinary(max)" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="doctype" Type="varchar" MaxLength="50" />
+          <Property Name="encryptkey" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="FileUploadDB">
+          <Key>
+            <PropertyRef Name="asymfileid" />
+          </Key>
+          <Property Name="asymfileid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="type" Type="varchar(max)" />
+          <Property Name="filedata" Type="varbinary(max)" />
+          <Property Name="symmentryKey" Type="varchar(max)" />
+          <Property Name="asymprivatepublicKey" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="FileWithoutEncript">
+          <Key>
+            <PropertyRef Name="fileid" />
+          </Key>
+          <Property Name="fileid" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FileContent" Type="varbinary(max)" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="POCModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="POCEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Files" EntityType="POCModel.File" />
+          <EntitySet Name="FileUploadDBs" EntityType="POCModel.FileUploadDB" />
+          <EntitySet Name="FileWithoutEncripts" EntityType="POCModel.FileWithoutEncript" />
+        </EntityContainer>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="fileid" />
+          </Key>
+          <Property Name="fileid" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="data" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="type" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="doctype" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="encryptkey" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FileUploadDB">
+          <Key>
+            <PropertyRef Name="asymfileid" />
+          </Key>
+          <Property Type="Int32" Name="asymfileid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="type" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="filedata" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="symmentryKey" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="asymprivatepublicKey" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FileWithoutEncript">
+          <Key>
+            <PropertyRef Name="fileid" />
+          </Key>
+          <Property Type="Int64" Name="fileid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Binary" Name="FileContent" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="POCModelStoreContainer" CdmEntityContainer="POCEntities">
+          <EntitySetMapping Name="Files">
+            <EntityTypeMapping TypeName="POCModel.File">
+              <MappingFragment StoreEntitySet="File">
+                <ScalarProperty Name="encryptkey" ColumnName="encryptkey" />
+                <ScalarProperty Name="fileid" ColumnName="fileid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="doctype" ColumnName="doctype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileUploadDBs">
+            <EntityTypeMapping TypeName="POCModel.FileUploadDB">
+              <MappingFragment StoreEntitySet="FileUploadDB">
+                <ScalarProperty Name="asymprivatepublicKey" ColumnName="asymprivatepublicKey" />
+                <ScalarProperty Name="symmentryKey" ColumnName="symmentryKey" />
+                <ScalarProperty Name="filedata" ColumnName="filedata" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="asymfileid" ColumnName="asymfileid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileWithoutEncripts">
+            <EntityTypeMapping TypeName="POCModel.FileWithoutEncript">
+              <MappingFragment StoreEntitySet="FileWithoutEncript">
+                <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+                <ScalarProperty Name="fileid" ColumnName="fileid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
